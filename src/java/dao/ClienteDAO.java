@@ -24,13 +24,14 @@ public class ClienteDAO {
         String sql;
         try {
             Connection con = Conecta.getConexao();
-            sql = "INSERT INTO clientes(nome_cliente, telefone_cliente, email_cliente) VALUES(?,?,?)";
+            sql = "INSERT INTO clientes(nome_cliente, telefone_cliente, email_cliente, usuario_cliente, senha_cliente) VALUES(?,?,?,?,?)";
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getTelefone());
             ps.setString(3, cliente.getEmail());
-
+            ps.setString(4, cliente.getUsuario());
+            ps.setString(5, cliente.getSenha());
             ps.execute();
 
             ps.close();
@@ -109,13 +110,15 @@ public class ClienteDAO {
         String resp;
         try {
             Connection con = Conecta.getConexao();
-            String sql = "UPDATE clientes SET nome_cliente=?, telefone_cliente=?, email_cliente=? WHERE id_cliente=?";
+            String sql = "UPDATE clientes SET nome_cliente=?, telefone_cliente=?, email_cliente=?, usuario_cliente=?, senha_cliente=? WHERE id_cliente=?";
             PreparedStatement ps = con.prepareStatement(sql);
+
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getTelefone());
             ps.setString(3, cliente.getEmail());
-            ps.setInt(4, cliente.getId());
-
+            ps.setString(4, cliente.getUsuario());
+            ps.setString(5, cliente.getSenha());
+            ps.setInt(6, cliente.getId());
             ps.execute();
 
             resp = "OK";
@@ -128,7 +131,7 @@ public class ClienteDAO {
     }
 
     /**
-     * Método que pesquisa os cliente no banco
+     * Método que pesquisa os clientes no banco
      *
      * @return resp String
      */
@@ -146,6 +149,8 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("nome_cliente"));
                 cliente.setTelefone(rs.getString("telefone_cliente"));
                 cliente.setEmail(rs.getString("email_cliente"));
+                cliente.setUsuario(rs.getString("usuario_cliente"));
+                cliente.setSenha(rs.getString("senha_cliente"));
 
                 arrayCliente.add(cliente);
             }
