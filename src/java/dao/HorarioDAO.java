@@ -18,6 +18,7 @@ public class HorarioDAO {
      * de horarios disponíveis.
      *
      * @param data
+     * @param funcionario
      * @return ArrayList<>
      */
     public ArrayList<Horario> buscarHorariosReservados(String data, int funcionario) {

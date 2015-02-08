@@ -92,6 +92,10 @@ public class FuncionarioDAO {
                 funcionario.setId(rs.getInt("id_funcionario"));
                 funcionario.setNome(rs.getString("nome_funcionario"));
                 funcionario.setTelefone(rs.getString("telefone_funcionario"));
+                funcionario.setCelular(rs.getString("celular_funcionario"));
+                funcionario.setCidade(rs.getString("cidade_funcionario"));
+                funcionario.setEstado(rs.getString("estado_funcionario"));
+                funcionario.setCep(rs.getString("cep_funcionario"));
                 funcionario.setEmail(rs.getString("email_funcionario"));
                 funcionario.setIdFuncao(rs.getInt("id_funcao"));
 
