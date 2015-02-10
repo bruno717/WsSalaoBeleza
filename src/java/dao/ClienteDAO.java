@@ -136,7 +136,7 @@ public class ClienteDAO {
      *
      * @return resp String
      */
-    public ArrayList<Cliente> listarCliente() {
+    public ArrayList<Cliente> listarClientes() {
         ArrayList<Cliente> arrayCliente = new ArrayList<Cliente>();
         try {
             Connection con = Conecta.getConexao();

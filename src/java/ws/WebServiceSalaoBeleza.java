@@ -6,10 +6,12 @@ package ws;
 import classes.Cliente;
 import classes.Funcionario;
 import classes.Horario;
+import classes.Procedimento;
 import classes.Reserva;
 import dao.ClienteDAO;
 import dao.FuncionarioDAO;
 import dao.HorarioDAO;
+import dao.ProcedimentoDAO;
 import dao.ReservaDAO;
 import java.util.ArrayList;
 import javax.jws.WebMethod;
@@ -157,6 +159,21 @@ public class WebServiceSalaoBeleza {
         listaFuncionarios = dao.listarFuncionario();
         
         return listaFuncionarios;
+    }
+
+    /**
+     * Operação de Web service
+     * @param idFuncao
+     * @return 
+     */
+    @WebMethod(operationName = "listaDeProcedimentos")
+    public ArrayList<Procedimento> listaDeProcedimentos(@WebParam(name = "idFuncao") int idFuncao) {
+        
+        ArrayList<Procedimento> listaProcedimentos;
+        ProcedimentoDAO dao = new ProcedimentoDAO();
+        listaProcedimentos = dao.listarProcedimentos(idFuncao);
+        
+        return listaProcedimentos;
     }
 
 
