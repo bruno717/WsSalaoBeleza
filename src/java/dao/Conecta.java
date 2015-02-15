@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Retorna a conexão com o banco de dados 'prova'
+ * Retorna a conexão com o banco de dados 'salao_beleza'
  *
  * @throws Exception
  *

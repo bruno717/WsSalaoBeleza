@@ -24,14 +24,15 @@ public class ClienteDAO {
         String sql;
         try {
             Connection con = Conecta.getConexao();
-            sql = "INSERT INTO clientes(nome_cliente, telefone_cliente, email_cliente, usuario_cliente, senha_cliente) VALUES(?,?,?,?,?)";
+            sql = "INSERT INTO clientes(nome_cliente, telefone_cliente, email_cliente, data_nascimento_cliente, usuario_cliente, senha_cliente) VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getTelefone());
-            ps.setString(3, cliente.getEmail());
-            ps.setString(4, cliente.getUsuario());
-            ps.setString(5, cliente.getSenha());
+            ps.setString(3, cliente.getEmail());   
+            ps.setString(4, cliente.getDataDeNascimento());
+            ps.setString(5, cliente.getUsuario());
+            ps.setString(6, cliente.getSenha());
             ps.execute();
 
             ps.close();
@@ -135,7 +136,7 @@ public class ClienteDAO {
      *
      * @return resp String
      */
-    public ArrayList<Cliente> listarCliente() {
+    public ArrayList<Cliente> listarClientes() {
         ArrayList<Cliente> arrayCliente = new ArrayList<Cliente>();
         try {
             Connection con = Conecta.getConexao();

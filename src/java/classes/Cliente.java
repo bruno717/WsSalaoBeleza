@@ -5,6 +5,7 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String email;
+    private String dataDeNascimento;
     private String usuario; 
     private String senha;
 
@@ -91,5 +92,19 @@ public class Cliente {
      */
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    /**
+     * @return the dataDeNascimento
+     */
+    public String getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    /**
+     * @param dataDeNascimento the dataDeNascimento to set
+     */
+    public void setDataDeNascimento(String dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 }
