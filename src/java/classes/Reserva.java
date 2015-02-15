@@ -4,7 +4,7 @@ public class Reserva {
 
     private int id;
     private String data;
-    private int id_hora;
+    private int idHora;
     private String procedimento;
     private int idCliente;
     private int idFuncionario;
@@ -41,14 +41,14 @@ public class Reserva {
      * @return the id_hora
      */
     public int getId_hora() {
-        return id_hora;
+        return idHora;
     }
 
     /**
      * @param id_hora the id_hora to set
      */
     public void setId_hora(int id_hora) {
-        this.id_hora = id_hora;
+        this.idHora = id_hora;
     }
 
     /**
