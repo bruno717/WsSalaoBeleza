@@ -6,8 +6,10 @@
         <group>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/dao/HorarioDAO.java</file>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/dao/ProcedimentoDAO.java</file>
+            <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/classes/Procedimento.java</file>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/classes/Funcionario.java</file>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/ws/WebServiceSalaoBeleza.java</file>
+            <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/classes/Reserva.java</file>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/dao/ClienteDAO.java</file>
             <file>file:/C:/Users/Bruno/Documents/NetBeansProjects/WsSalaoBeleza/src/java/dao/ReservaDAO.java</file>
         </group>
