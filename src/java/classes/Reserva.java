@@ -37,19 +37,7 @@ public class Reserva {
         this.data = data;
     }
 
-    /**
-     * @return the id_hora
-     */
-    public int getId_hora() {
-        return idHora;
-    }
-
-    /**
-     * @param id_hora the id_hora to set
-     */
-    public void setId_hora(int id_hora) {
-        this.idHora = id_hora;
-    }
+    
 
     /**
      * @return the procedimento
@@ -93,5 +81,17 @@ public class Reserva {
         this.idFuncionario = idFuncionario;
     }
 
-   
+    /**
+     * @return the idHora
+     */
+    public int getIdHora() {
+        return idHora;
+    }
+
+    /**
+     * @param idHora the idHora to set
+     */
+    public void setIdHora(int idHora) {
+        this.idHora = idHora;
+    }
 }

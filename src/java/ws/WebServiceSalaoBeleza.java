@@ -4,11 +4,13 @@
 package ws;
 
 import classes.Cliente;
+import classes.Funcao;
 import classes.Funcionario;
 import classes.Horario;
 import classes.Procedimento;
 import classes.Reserva;
 import dao.ClienteDAO;
+import dao.FuncaoDAO;
 import dao.FuncionarioDAO;
 import dao.HorarioDAO;
 import dao.ProcedimentoDAO;
@@ -134,47 +136,64 @@ public class WebServiceSalaoBeleza {
      *
      * @param data
      * @param funcionario
+     * @param cliente
      * @return ArrayList<>
      */
     @WebMethod(operationName = "listaDeHorariosDisponiveis")
-    public ArrayList<Horario> listaDeHorariosDisponiveis(@WebParam(name = "data") 
-            String data, @WebParam(name = "funcionario") int funcionario) {
+    public ArrayList<Horario> listaDeHorariosDisponiveis(@WebParam(name = "data") String data, @WebParam(name = "funcionario") int funcionario, @WebParam(name = "cliente") int cliente) {
 
         HorarioDAO dao = new HorarioDAO();
         ArrayList<Horario> listaHorario;
-        listaHorario = dao.buscarHorariosReservados(data, funcionario);
+        listaHorario = dao.buscarHorariosReservados(data, funcionario, cliente);
 
         return listaHorario;
     }
 
     /**
      * Operação de Web service
-     * @return 
+     *
+     * @param idFuncao
+     * @return
      */
-    @WebMethod(operationName = "listaDeFuncionarios")
-    public ArrayList<Funcionario> listaDeFuncionarios() {
-        
-        ArrayList<Funcionario> listaFuncionarios;
-        FuncionarioDAO dao = new FuncionarioDAO();
-        listaFuncionarios = dao.listarFuncionario();
-        
-        return listaFuncionarios;
+    @WebMethod(operationName = "listaDeProcedimentos")
+    public ArrayList<Procedimento> listaDeProcedimentos(@WebParam(name = "idFuncao") int idFuncao) {
+
+        ArrayList<Procedimento> listaProcedimentos;
+        ProcedimentoDAO dao = new ProcedimentoDAO();
+        listaProcedimentos = dao.listarProcedimentos(idFuncao);
+
+        return listaProcedimentos;
     }
 
     /**
      * Operação de Web service
-     * @param idFuncao
-     * @return 
+     *
+     * @return
      */
-    @WebMethod(operationName = "listaDeProcedimentos")
-    public ArrayList<Procedimento> listaDeProcedimentos(@WebParam(name = "idFuncao") int idFuncao) {
-        
-        ArrayList<Procedimento> listaProcedimentos;
-        ProcedimentoDAO dao = new ProcedimentoDAO();
-        listaProcedimentos = dao.listarProcedimentos(idFuncao);
-        
-        return listaProcedimentos;
+    @WebMethod(operationName = "listaDeFuncoes")
+    public ArrayList<Funcao> listaDeFuncoes() {
+
+        ArrayList<Funcao> listaFuncoes;
+        FuncaoDAO dao = new FuncaoDAO();
+        listaFuncoes = dao.listarFuncao();
+
+        return listaFuncoes;
     }
 
+    /**
+     * Operação de Web service
+     *
+     * @param idFuncao
+     * @return
+     */
+    @WebMethod(operationName = "listaDeFuncionarios")
+    public ArrayList<Funcionario> listaDeFuncionarios(@WebParam(name = "idFuncao") int idFuncao) {
+
+        ArrayList<Funcionario> listaFuncionarios;
+        FuncionarioDAO dao = new FuncionarioDAO();
+        listaFuncionarios = dao.listarFuncionario(idFuncao);
+
+        return listaFuncionarios;
+    }
 
 }

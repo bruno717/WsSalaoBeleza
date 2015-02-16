@@ -19,14 +19,15 @@ public class HorarioDAO {
      *
      * @param data
      * @param funcionario
+     * @param cliente
      * @return ArrayList<>
      */
-    public ArrayList<Horario> buscarHorariosReservados(String data, int funcionario) {
+    public ArrayList<Horario> buscarHorariosReservados(String data, int funcionario, int cliente) {
         ArrayList<Horario> lista = new ArrayList<Horario>();
         try {
             Connection con = Conecta.getConexao();
             String sql = "SELECT * FROM reservas WHERE data_reserva = '" + Util.formataDataBanco(data) + "'"
-                    + " AND id_funcionario = " + funcionario;
+                    + " AND id_funcionario = " + funcionario + " AND id_cliente = " + cliente;
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 

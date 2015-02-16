@@ -49,7 +49,7 @@ public class FuncionarioDAO {
         }
         return resp;
     }
-    
+
     /**
      * Método que exclui funcionario no banco
      *
@@ -73,17 +73,18 @@ public class FuncionarioDAO {
         }
         return resp;
     }
-    
+
     /**
      * Método que pesquisa os funcionarios no banco
      *
+     * @param idFuncao
      * @return resp String
      */
-    public ArrayList<Funcionario> listarFuncionario() {
+    public ArrayList<Funcionario> listarFuncionario(int idFuncao) {
         ArrayList<Funcionario> arrayFuncionario = new ArrayList<Funcionario>();
         try {
             Connection con = Conecta.getConexao();
-            String sql = "SELECT * FROM funcionarios ORDER BY nome_funcionario";
+            String sql = "SELECT * FROM funcionarios WHERE id_funcao =" + idFuncao + " ORDER BY nome_funcionario";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

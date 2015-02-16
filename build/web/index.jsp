@@ -49,7 +49,7 @@
             <%
                 ArrayList<Horario> lista = new ArrayList<Horario>();
                 WebServiceSalaoBeleza service = new WebServiceSalaoBeleza();
-                lista = service.listaDeHorariosDisponiveis("14/12/2014", 2);
+                lista = service.listaDeHorariosDisponiveis("14/12/2014", 2, 2);
                 //lista = new ReservaDAO().buscarMesasReservadas("", "");
                 for (int i = 0; i < lista.size(); i++) {
             %>

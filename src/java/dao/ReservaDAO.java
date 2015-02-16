@@ -30,7 +30,7 @@ public class ReservaDAO {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 
             ps.setDate(1, Util.formataDataBanco(reserva.getData()));
-            ps.setInt(2, reserva.getId_hora());
+            ps.setInt(2, reserva.getIdHora());
             ps.setString(3, reserva.getProcedimento());
             ps.setInt(4, reserva.getIdCliente());
             ps.setInt(5, reserva.getIdFuncionario());
@@ -59,7 +59,7 @@ public class ReservaDAO {
             String sql = "DELETE FROM reservas WHERE data_reserva=? AND id_horario=? AND id_cliente=?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Util.formataDataBanco(reserva.getData()));
-            ps.setInt(2, reserva.getId_hora());
+            ps.setInt(2, reserva.getIdHora());
             ps.setInt(3, reserva.getIdCliente());
             ps.execute();
 
@@ -83,7 +83,7 @@ public class ReservaDAO {
         try {
             Connection con = Conecta.getConexao();
             String sql = "SELECT * FROM reservas WHERE data_reserva='" + Util.formataDataBanco(reserva.getData())
-                    + "' AND id_horario='" + reserva.getId_hora()
+                    + "' AND id_horario='" + reserva.getIdHora()
                     + "' AND id_cliente=" + reserva.getIdCliente();
 
             Statement stmt = con.createStatement();
@@ -109,7 +109,7 @@ public class ReservaDAO {
         Date dataPadraoBanco = Util.formataDataBanco(dataPadraoBrasileiro);
         try {
             Connection con = Conecta.getConexao();
-            String sql = "SELECT * FROM reservas WHERE data_reserva="+dataPadraoBanco;
+            String sql = "SELECT * FROM reservas WHERE data_reserva=" + dataPadraoBanco;
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -117,7 +117,7 @@ public class ReservaDAO {
 
                 reserva.setId(rs.getInt("id_reserva"));
                 reserva.setData(Util.formataDataPadrao(rs.getDate("data_reserva").toString()));
-                reserva.setId_hora(rs.getInt("id_horario"));
+                reserva.setIdHora(rs.getInt("id_horario"));
                 reserva.setProcedimento(rs.getString("proced_reserva"));
                 reserva.setIdCliente(rs.getInt("id_cliente"));
                 reserva.setIdFuncionario(rs.getInt("id_funcionario"));
