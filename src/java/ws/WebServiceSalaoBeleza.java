@@ -3,6 +3,7 @@
  */
 package ws;
 
+import classes.AgendaCliente;
 import classes.Cliente;
 import classes.Funcao;
 import classes.Funcionario;
@@ -194,6 +195,23 @@ public class WebServiceSalaoBeleza {
         listaFuncionarios = dao.listarFuncionario(idFuncao);
 
         return listaFuncionarios;
+    }
+
+    /**
+     * Operação de Web service
+     *
+     * @param idCliente
+     * @return
+     */
+    @WebMethod(operationName = "listaAgendaCliente")
+    public ArrayList<AgendaCliente> listaAgendaCliente(@WebParam(name = "idCliente") int idCliente) {
+
+        ArrayList<AgendaCliente> agendaCliente;
+
+        ReservaDAO dao = new ReservaDAO();
+        agendaCliente = dao.agendaCliente(idCliente);
+
+        return agendaCliente;
     }
 
 }

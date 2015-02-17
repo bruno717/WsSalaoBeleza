@@ -3,6 +3,9 @@
  */
 package dao;
 
+import classes.AgendaCliente;
+import classes.Funcionario;
+import classes.Horario;
 import classes.Reserva;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -129,6 +132,42 @@ public class ReservaDAO {
             con.close();
         } catch (Exception e) {
             System.out.println("ERRO(agendaFuncionario): " + e.toString());
+        }
+        return arrayAgenda;
+    }
+
+    /**
+     * Método que retorna a agenda do cliente
+     *
+     * @param cliente
+     * @return
+     */
+    public ArrayList<AgendaCliente> agendaCliente(int cliente) {
+        ArrayList<AgendaCliente> arrayAgenda = new ArrayList<AgendaCliente>();
+        HorarioDAO hdao = new HorarioDAO();
+        FuncionarioDAO fdao = new FuncionarioDAO();
+
+        try {
+            Connection con = Conecta.getConexao();
+            String sql = "SELECT * FROM reservas WHERE id_cliente=" + cliente + " ORDER BY data_reserva";
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                AgendaCliente agendaCliente = new AgendaCliente();
+
+                agendaCliente.setIdReserva(rs.getInt("id_reserva"));
+                agendaCliente.setData(Util.formataDataPadrao(rs.getDate("data_reserva").toString()));
+                agendaCliente.setHora(hdao.buscarHorario(rs.getInt("id_horario")));
+                agendaCliente.setProcedimento(rs.getString("proced_reserva"));
+                agendaCliente.setProfissional(fdao.buscarFuncionario(rs.getInt("id_funcionario")));
+
+                arrayAgenda.add(agendaCliente);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println("ERRO(agendaCliente): " + e.toString());
         }
         return arrayAgenda;
     }

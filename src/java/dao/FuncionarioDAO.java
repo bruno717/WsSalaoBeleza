@@ -110,4 +110,31 @@ public class FuncionarioDAO {
         }
         return arrayFuncionario;
     }
+
+    /**
+     * Método que pesquisa um funcionário no banco
+     *
+     * @param idFuncionario
+     * @return resp String
+     */
+    public String buscarFuncionario(int idFuncionario) {
+        String funcionario = "";
+        try {
+            Connection con = Conecta.getConexao();
+            String sql = "SELECT * FROM funcionarios WHERE id_funcionario =" + idFuncionario;
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                
+                funcionario = rs.getString("nome_funcionario");
+                
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println("ERRO:(buscarFuncionario) " + e.toString());
+        }
+        return funcionario;
+    }
 }

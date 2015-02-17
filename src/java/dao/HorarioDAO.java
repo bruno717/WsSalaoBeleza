@@ -77,6 +77,34 @@ public class HorarioDAO {
             System.out.println("ERRO:(buscarHorariosDisponiveis) " + e.toString());
             return null;
         }
+    }
 
+    /**
+     * Método que busca um horário
+     *
+     * @param idHorario
+     * @return
+     */
+    public String buscarHorario(int idHorario) {
+        String horario = "";
+        try {
+            Connection con = Conecta.getConexao();
+            String sql = "SELECT * FROM horarios WHERE id_horario =" + idHorario;
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                horario = rs.getString("hora_horario");
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println("ERRO:(buscarHorario) " + e.toString());
+        }
+
+        return horario;
     }
 }
