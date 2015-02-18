@@ -55,15 +55,70 @@ public class ReservaDAO {
      * @param reserva
      * @return resp String
      */
-    public String excluirReserva(Reserva reserva) {
+    /* public String excluirReserva(Reserva reserva) {
+     String resp;
+     try {
+     Connection con = Conecta.getConexao();
+     String sql = "DELETE FROM reservas WHERE data_reserva=? AND id_horario=? AND id_cliente=?";
+     PreparedStatement ps = con.prepareStatement(sql);
+     ps.setDate(1, Util.formataDataBanco(reserva.getData()));
+     ps.setInt(2, reserva.getIdHora());
+     ps.setInt(3, reserva.getIdCliente());
+     ps.execute();
+
+     ps.close();
+     con.close();
+     resp = "OK";
+     } catch (Exception e) {
+     resp = "ERRO:(excluirReserva) " + e.toString();
+     }
+     return resp;
+     }
+
+     /**
+     * Método que valida reserva no banco antes de chamar o médodo de excluir
+     *
+     * @param reserva
+     * @return resp String
+     */
+    /* public String validaExclusaoReserva(Reserva reserva) {
+     String resp;
+     try {
+     Connection con = Conecta.getConexao();
+     String sql = "SELECT * FROM reservas WHERE data_reserva='" + Util.formataDataBanco(reserva.getData())
+     + "' AND id_horario='" + reserva.getIdHora()
+     + "' AND id_cliente=" + reserva.getIdCliente();
+
+     Statement stmt = con.createStatement();
+     ResultSet rs = stmt.executeQuery(sql);
+     if (rs.next()) {
+     resp = "OK";
+     } else {
+     resp = "vazio";
+     }
+
+     rs.close();
+     stmt.close();
+     con.close();
+     } catch (Exception e) {
+     System.out.println("ERRO:(validaExclusaoReserva) " + e.toString());
+     resp = "ERRO:(validaExclusaoReserva) " + e.toString();
+     }
+     return resp;
+     }*/
+    /**
+     * Método que exclui reserva no banco
+     *
+     * @param idReserva
+     * @return resp String
+     */
+    public String excluirReserva(int idReserva) {
         String resp;
         try {
             Connection con = Conecta.getConexao();
-            String sql = "DELETE FROM reservas WHERE data_reserva=? AND id_horario=? AND id_cliente=?";
+            String sql = "DELETE FROM reservas WHERE id_reserva=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Util.formataDataBanco(reserva.getData()));
-            ps.setInt(2, reserva.getIdHora());
-            ps.setInt(3, reserva.getIdCliente());
+            ps.setInt(1, idReserva);
             ps.execute();
 
             ps.close();
@@ -71,38 +126,6 @@ public class ReservaDAO {
             resp = "OK";
         } catch (Exception e) {
             resp = "ERRO:(excluirReserva) " + e.toString();
-        }
-        return resp;
-    }
-
-    /**
-     * Método que valida reserva no banco antes de chamar o médodo de excluir
-     *
-     * @param reserva
-     * @return resp String
-     */
-    public String validaExclusaoReserva(Reserva reserva) {
-        String resp;
-        try {
-            Connection con = Conecta.getConexao();
-            String sql = "SELECT * FROM reservas WHERE data_reserva='" + Util.formataDataBanco(reserva.getData())
-                    + "' AND id_horario='" + reserva.getIdHora()
-                    + "' AND id_cliente=" + reserva.getIdCliente();
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                resp = "OK";
-            } else {
-                resp = "vazio";
-            }
-
-            rs.close();
-            stmt.close();
-            con.close();
-        } catch (Exception e) {
-            System.out.println("ERRO:(validaExclusaoReserva) " + e.toString());
-            return "ERRO:(validaExclusaoReserva) " + e.toString();
         }
         return resp;
     }
@@ -149,7 +172,7 @@ public class ReservaDAO {
 
         try {
             Connection con = Conecta.getConexao();
-            String sql = "SELECT * FROM reservas WHERE id_cliente=" + cliente + " ORDER BY data_reserva";
+            String sql = "SELECT * FROM reservas WHERE id_cliente=" + cliente + " ORDER BY data_reserva, id_horario";
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

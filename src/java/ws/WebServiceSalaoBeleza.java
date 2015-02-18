@@ -110,26 +110,19 @@ public class WebServiceSalaoBeleza {
     /**
      * Operação para chamar o método excluirReserva
      *
-     * @param reserva
+     * @param idReserva
      * @return String
      */
     @WebMethod(operationName = "deletaReserva")
-    public String deletaReserva(@WebParam(name = "reserva") Reserva reserva) {
+    public String deletaReserva(@WebParam(name = "idReserva") int idReserva) {
 
         String resp;
         ReservaDAO dao = new ReservaDAO();
-        resp = dao.validaExclusaoReserva(reserva);
 
-        if (resp.equals("OK")) {
-            resp = dao.excluirReserva(reserva);
-            if (resp.equals("OK")) {
-                return "Reserva cancelada!";
-            } else {
-                return resp;
-            }
-        } else {
-            return "Você não tem reserva nesta data e horário!";
-        }
+        resp = dao.excluirReserva(idReserva);
+
+        return resp;
+
     }
 
     /**
