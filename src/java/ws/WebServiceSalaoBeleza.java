@@ -4,13 +4,13 @@
 package ws;
 
 import classes.AgendaCliente;
-import classes.Cliente;
+import classes.Pessoa;
 import classes.Funcao;
 import classes.Funcionario;
 import classes.Horario;
 import classes.Procedimento;
 import classes.Reserva;
-import dao.ClienteDAO;
+import dao.PessoaDAO;
 import dao.FuncaoDAO;
 import dao.FuncionarioDAO;
 import dao.HorarioDAO;
@@ -25,64 +25,64 @@ import javax.jws.WebService;
 public class WebServiceSalaoBeleza {
 
     /**
-     * Operação para chamar o método gravarCliente
+     * Operação para chamar o método gravarPessoa
      *
-     * @param cliente
+     * @param pessoa
      * @return String
      */
-    @WebMethod(operationName = "insereCliente")
-    public String insereCliente(@WebParam(name = "cliente") Cliente cliente) {
+    @WebMethod(operationName = "inserePessoa")
+    public String inserePessoa(@WebParam(name = "pessoa") Pessoa pessoa) {
         String resp;
-        ClienteDAO dao = new ClienteDAO();
-        resp = dao.gravarCliente(cliente);
+        PessoaDAO dao = new PessoaDAO();
+        resp = dao.gravarPessoa(pessoa);
 
         if (resp.equals("OK")) {
-            return "Cliente gravado com sucesso!";
+            return "Pessoa gravado com sucesso!";
         } else {
             return resp;
         }
     }
 
     /**
-     * Operação para chamar o método excluirCliente
+     * Operação para chamar o método excluirPessoa
      *
-     * @param cliente
+     * @param pessoa
      * @return String
      */
-    @WebMethod(operationName = "deletaCliente")
-    public String deletaCliente(@WebParam(name = "cliente") Cliente cliente) {
+    @WebMethod(operationName = "deletaPessoa")
+    public String deletaPessoa(@WebParam(name = "pessoa") Pessoa pessoa) {
 
         String resp;
-        ClienteDAO dao = new ClienteDAO();
-        resp = dao.validaExclusaoCliente(cliente);
+        PessoaDAO dao = new PessoaDAO();
+        resp = dao.validaExclusaoPessoa(pessoa);
 
         if (resp.equals("OK")) {
-            resp = dao.excluirCliente(cliente);
+            resp = dao.excluirPessoa(pessoa);
             if (resp.equals("OK")) {
-                return "Cliente excluído!";
+                return "Pessoa excluída!";
             } else {
                 return resp;
             }
         } else {
-            return "Cliente não existe!";
+            return "Pessoa não existe!";
         }
     }
 
     /**
      * Operação para chamar o método alterarReserva
      *
-     * @param cliente
+     * @param pessoa
      * @return String
      */
-    @WebMethod(operationName = "atualizaCliente")
-    public String atualizaCliente(@WebParam(name = "cliente") Cliente cliente) {
+    @WebMethod(operationName = "atualizaPessoa")
+    public String atualizaCliente(@WebParam(name = "pessoa") Pessoa pessoa) {
 
         String resp;
-        ClienteDAO dao = new ClienteDAO();
-        resp = dao.alterarCliente(cliente);
+        PessoaDAO dao = new PessoaDAO();
+        resp = dao.alterarPessoa(pessoa);
 
         if (resp.equals("OK")) {
-            return "Cliente alterado com sucesso!";
+            return "Pessoa alterado com sucesso!";
         } else {
             return resp;
         }
@@ -205,6 +205,22 @@ public class WebServiceSalaoBeleza {
         agendaCliente = dao.agendaCliente(idCliente);
 
         return agendaCliente;
+    }
+
+    /**
+     * Operação de Web service
+     *
+     * @param pessoa
+     * @return
+     */
+    @WebMethod(operationName = "loginPessoa")
+    public Pessoa loginPessoa(@WebParam(name = "pessoa") Pessoa pessoa) {
+
+        PessoaDAO dao = new PessoaDAO();
+        Pessoa p;
+        p = dao.pesquisaPessoa(pessoa);
+
+        return p;
     }
 
 }

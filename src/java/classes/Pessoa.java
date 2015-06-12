@@ -1,144 +1,136 @@
 package classes;
 
-/**
- *
- * @author bruno.oliveira
- */
 public class Pessoa {
 
-    private int Id;
-    private String EnderecoEmail;
-    private String NumeroTelefone;
-    private String Nome;
-    private String NumeroCpf;
-    private String NumeroRg;
-    private String Login;
-    private String Senha;
-    private int IdPerfil;
+    private int id;
+    private String nome;
+    private String telefone;
+    private String email;
+    private String dataDeNascimento;
+    private String usuario;
+    private String senha;
+    private int perfil;
+
+    public Pessoa() {
+        id = 0;
+        nome = "";
+        telefone = "";
+        email = "";
+        dataDeNascimento = "";
+        usuario = "";
+        senha = "";
+        perfil = -1;
+    }
 
     /**
-     * @return the Id
+     * @return the id
      */
     public int getId() {
-        return Id;
+        return id;
     }
 
     /**
-     * @param Id the Id to set
+     * @param id the id to set
      */
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
-     * @return the EnderecoEmail
-     */
-    public String getEnderecoEmail() {
-        return EnderecoEmail;
-    }
-
-    /**
-     * @param EnderecoEmail the EnderecoEmail to set
-     */
-    public void setEnderecoEmail(String EnderecoEmail) {
-        this.EnderecoEmail = EnderecoEmail;
-    }
-
-    /**
-     * @return the NumeroTelefone
-     */
-    public String getNumeroTelefone() {
-        return NumeroTelefone;
-    }
-
-    /**
-     * @param NumeroTelefone the NumeroTelefone to set
-     */
-    public void setNumeroTelefone(String NumeroTelefone) {
-        this.NumeroTelefone = NumeroTelefone;
-    }
-
-    /**
-     * @return the Nome
+     * @return the nome
      */
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     /**
-     * @param Nome the Nome to set
+     * @param nome the nome to set
      */
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * @return the NumeroCpf
+     * @return the telefone
      */
-    public String getNumeroCpf() {
-        return NumeroCpf;
+    public String getTelefone() {
+        return telefone;
     }
 
     /**
-     * @param NumeroCpf the NumeroCpf to set
+     * @param telefone the telefone to set
      */
-    public void setNumeroCpf(String NumeroCpf) {
-        this.NumeroCpf = NumeroCpf;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     /**
-     * @return the NumeroRg
+     * @return the email
      */
-    public String getNumeroRg() {
-        return NumeroRg;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param NumeroRg the NumeroRg to set
+     * @param email the email to set
      */
-    public void setNumeroRg(String NumeroRg) {
-        this.NumeroRg = NumeroRg;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * @return the Login
+     * @return the usuario
      */
-    public String getLogin() {
-        return Login;
+    public String getUsuario() {
+        return usuario;
     }
 
     /**
-     * @param Login the Login to set
+     * @param usuario the usuario to set
      */
-    public void setLogin(String Login) {
-        this.Login = Login;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     /**
-     * @return the Senha
+     * @return the senha
      */
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     /**
-     * @param Senha the Senha to set
+     * @param senha the senha to set
      */
-    public void setSenha(String Senha) {
-        this.Senha = Senha;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     /**
-     * @return the IdPerfil
+     * @return the dataDeNascimento
      */
-    public int getIdPerfil() {
-        return IdPerfil;
+    public String getDataDeNascimento() {
+        return dataDeNascimento;
     }
 
     /**
-     * @param IdPerfil the IdPerfil to set
+     * @param dataDeNascimento the dataDeNascimento to set
      */
-    public void setIdPerfil(int IdPerfil) {
-        this.IdPerfil = IdPerfil;
+    public void setDataDeNascimento(String dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    /**
+     * @return the perfil
+     */
+    public int getPerfil() {
+        return perfil;
+    }
+
+    /**
+     * @param perfil the perfil to set
+     */
+    public void setPerfil(int perfil) {
+        this.perfil = perfil;
     }
 }
